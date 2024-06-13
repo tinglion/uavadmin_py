@@ -1,0 +1,918 @@
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+		阿法替尼_药名检索结果_临床用药参考_医脉通</title>
+<meta name="keywords" content='
+		阿法替尼_,适应症,用法用量,不良反应,禁忌症,相互作用,生产厂家,药品说明书,说明书,SFDA'>
+<meta name="description" content='用药参考收录来自生产厂家最新药品说明书及SFDA的药品说明书范本，您可通过通用名称、商品名、汉语拼音等迅速找到药品说明书内容'>
+
+
+
+<base href="https://drugs.medlive.cn:/"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="apple-touch-icon" href="favicon.ico" />
+<link type="text/css" rel="stylesheet" href="https://drugs.medlive.cn/res/drugref.css?_v=20230110" />
+<script type="text/javascript" src="https://drugs.medlive.cn/res/js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="https://drugs.medlive.cn/res/js/jquery.bgiframe.min.js"></script>
+<script type="text/javascript" src="https://drugs.medlive.cn/res/js/jquery.autocomplete-min.js"></script>
+<script type="text/javascript" src="https://drugs.medlive.cn/res/js/common.js?v=6"></script>
+<script type="text/javascript" src="https://drugs.medlive.cn/res/js/jquery.texthint.js"></script>
+<script type="text/javascript" src="https://drugs.medlive.cn/res/js/jquery-dragmove.js"></script>
+<script type="text/javascript">
+	var BASE_PATH = 'https://drugs.medlive.cn:/';
+</script>
+<script>
+	//悬浮的下载app图标  开始
+	var showFlag=false;
+	$(function(){
+		$('body').append(`<div class="pc_app_code" id="app_code">
+	<div class="pc_app_code_box">
+		<img class="pc_code_icon" src="https://drugs.medlive.cn/res/drugref/shoujihao.png" />
+		<div class="pc_code_text">下载APP</div>
+		<div class="pc_hide_code">
+			<img class="pc_hide_code_img" src="https://drugs.medlive.cn/res/drugref/cankao_logo2.png" />
+			<div class="pc_hide_code_text">用微信扫二维码</div>
+			<div class="pc_hide_code_text">下载<span class="acolor">用药参考</span></div>
+			<div class="pc_hide_code_text"><span class="acolor">APP</span></div>
+		</div>
+	</div>
+</div>`)
+		handelAppCode(".pc_app_code_box",".pc_hide_code");
+		$('.pc_app_code_box').drag();
+	})
+	//悬浮的下载app图标  结束
+</script>
+<style>
+
+	/* 项目必须项  START*/
+	/*给OTC等图片，增加鼠标手型 */
+	.ins_img{ cursor:pointer}
+	/* 提示信息用 START */
+	.ggd{ border:1px solid #0000ff; width:auto; height:auto; padding:5px; font-size:14px; position:absolute; background:#dbecfe}
+	.ggd select{width:150px;}
+	.guigediv{width:300px;line-height:20px;}
+	.guige {color:#3399FF;cursor:pointer}
+	.ggd table td {vertical-align:top;font-size:14px;}
+	/* 提示信息用 END */
+
+	.fragment_handle {
+	    background: url("res/resource/zoom.gif") no-repeat scroll 0 -13px transparent;
+	/*	font-size: 0; line-height: 0;width: 14px;*/
+		font-size:12px; width:auto;
+	    display: block; border: 1px solid #FFFFFF;
+		bottom: 4px; height: 14px; right: 4px;
+	    text-decoration: none;float:left}
+	.drugref_fragment_container{width:663px; overflow:hidden;margin-bottom: 10px;}
+	.drugref_fragment_container a{text-decoration: none;}
+
+	/*autocomplete*/
+	.autocomplete-w1 { background:url(res/resource/shadow.png) no-repeat bottom right; position:absolute; top:0px; left:0px; margin:12px 0 0 4px;
+	/* IE6 fix: */ _background:none; _margin:0; }
+	.autocomplete {font:14px/1.5  Arial; border:1px solid #999; background:#FFF;
+	cursor:default; text-align:left; max-height:200px; overflow:auto; margin:-8px 6px 6px -5px;
+	/* IE6 specific: */ _height:200px;  _margin:0; _overflow-x:hidden; }
+	.autocomplete .selected { background:#F0F0F0; }
+	.autocomplete div { padding:1px 10px; white-space:nowrap; }
+	.autocomplete strong { font-weight:normal; color:#3399FF; }
+	/* 项目必须项 END */
+
+	/* 自动截断长字符串*/
+	.ellipsis { overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+
+	/* DIV自动对齐*/
+	.table-two {
+	    border-left: 1px solid #CAD1D5;
+	    float: left;
+	    margin-top: 24px;
+	    width: auto;
+	}
+	.some-div {
+	    border-bottom: 1px solid #CAD1D5;
+	    border-right: 1px solid #CAD1D5;
+	    float: left;
+	    height: 201px;
+	    padding-bottom: 20px;
+	    width: 190px;
+	}
+    img {
+        max-width: 100%;
+    }
+</style>
+
+</head>
+
+<body>
+	
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+
+		var fillUserInfo = function(info){
+			if(info.inbox_count){
+				$('#inbox_count').text(info.inbox_count);
+				$('#has_inbox').show();
+			}
+			if(info.sysmsg_count){
+				$('#sysmsg_count').text(info.sysmsg_count);
+				$('#has_sysmsg').show();
+			}
+			if(info.username){
+				$('#username').text(info.username);
+			}
+		}
+		
+		var hoverUserNavi = function(){
+			$('#get_icon_user_width').hover(function(){
+				$('#get_icon_user_a').css('background-color', '#EAEAEA');
+				$('#user_navi_list').show();
+			},function(){
+				$('#get_icon_user_a').css('background-color', '');
+				$('#user_navi_list').hide();
+			});
+		}
+		
+		var autoSetWidth = function(){
+			var width = document.getElementById('get_icon_user_a').offsetWidth;
+			$('#get_icon_user_width').css('width', width);
+			$('#user_navi_list').css('width',width);
+			$('#user_navi_list > li > a').css('width', width - 11);	//a margin-left:11px;
+		}
+
+		var getUserInfoAjax = function(){
+			var url = 'drugref/getUserInfoAjax.do';
+			$.post(url, function(res){
+				if(res.success){
+					fillUserInfo(res.data);
+					$("#login").css("display", "block");
+					autoSetWidth();
+					hoverUserNavi();
+				}else{
+					$("#unlogin").css("display", "block");
+					if($("#loginLink").attr("href").indexOf("?") > 0){
+						$("#loginLink").attr("href", $("#loginLink").attr("href") + "&service=" + encodeURIComponent(location.href));
+					}else{
+						$("#loginLink").attr("href", $("#loginLink").attr("href") + "?service=" + encodeURIComponent(location.href));
+					}
+				}
+			}, 'json');
+		}
+		getUserInfoAjax();
+		
+		//频道导航
+		$('#channelNavi').hover(function(){
+			$('#chanel_navi_a').css('background-color', '#EAEAEA');
+			$('#channel_navi_list').show();
+		},function(){
+			$('#chanel_navi_a').css('background-color', '');
+			$('#channel_navi_list').hide();
+		})		
+
+	});
+</script>
+<div class="emr_top">
+  <div class="emr_top_body">
+    <ul class="emr_top_l">
+      <li class="icon index"> <a href='http://www.medlive.cn'>医脉通首页</a> </li>
+      <li class="icon mobile"> <a href='http://app.medlive.cn/app_index.php'>软件中心</a> </li>
+      <li class="icon nav" id="channelNavi">
+      	<a id="chanel_navi_a" href="javascript:void(0);">频道导航<span class="down"></span></a>
+        <ul class="nav_list" style="display:none;" id="channel_navi_list">
+          <li> <a href='http://news.medlive.cn/'>资讯</a> </li>
+          <li> <a href='http://case.medlive.cn/'>病例</a> </li>
+          <li> <a href='http://special.medlive.cn/'>专题</a> </li>
+          <li> <a href='http://group.medlive.cn/'>圈子</a> </li>
+          <li> <a href='http://guide.medlive.cn/'>指南</a> </li>
+          <li> <a href='http://paper.medlive.cn/'>期刊文献</a> </li>
+          <li> <a href='http://disease.medlive.cn/wiki/'>诊疗知识库</a> </li>
+          <li> <a href='http://mr.medlive.cn/'>e信使</a> </li>
+          <li> <a href='http://class.medlive.cn/'>e讲堂</a> </li>
+          <li> <a href='http://survey.medlive.cn/'>e调研</a> </li>
+          <li> <a href='http://meetings.medlive.cn/'>会议</a> </li>
+          <li><a href='http://www.medlive.cn/tools.php'>医生工具</a></li>
+          <li> <a href='http://res.medlive.cn/res/'>医学资源</a> </li>
+          <li> <a href='http://www.medlive.cn/appeal/'>互助区</a> </li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="emr_top_r" id="unlogin" style="display: none;">
+    	<li class="icon login"><a href='https://www.medlive.cn/auth/login' id="loginLink">登录</a></li>
+    	<li class="icon regist"><a href='http://setting.medlive.cn/reg'>注册</a></li>
+    </ul>
+    <ul class="emr_top_r" id="login" style="display: none;">
+    	<li id="get_icon_user_width" class="icon user"> 
+    		<a id="get_icon_user_a" class="name" href='http://i.medlive.cn/'><span id="username"></span><span class="down"></span></a>
+	        <ul class="nav_list" style="display:none;" id="user_navi_list">
+	          <li> <a href='http://i.medlive.cn/'>我的医脉通</a> </li>
+	          <li> <a href='http://setting.medlive.cn/setting/profile'>个人设置</a> </li>
+	          <li> <a href='http://www.medlive.cn/usercenter/score_detail.do'>我的账户</a> </li>
+	          <li> <a href='http://www.medlive.cn/gift/'>礼品兑换</a> </li>
+	          <li> <a href='https://www.medlive.cn/auth/logout'>退出</a> </li>
+	        </ul>
+      	</li>
+      	<li class="icon mail">
+      		<a href='http://i.medlive.cn/email_list'>站内信<span id='has_inbox' style="display:none;">(<span id='inbox_count' class="red"></span>)</span></a>
+      	</li>
+      	<li class="icon notice">
+      		<a href='http://i.medlive.cn/message_list'>系统通知<span id='has_sysmsg' style="display:none;">(<span id='sysmsg_count' class="red"></span>)</span></a>
+      	</li>
+    </ul>
+  </div>
+</div>
+	<div class="header">
+		
+
+
+
+
+<div class="header_body">
+   	<a href="drugref/index.do" class="add-a"><div class="left little_logo1"></div></a>
+	<div class="left nav_search">
+	    <div class="logo-nav">
+	        <ul class="nav clearfix">
+				<li id="drugInfo"><a href="drugref/index.do">药品名称</a></li>
+		        <li id="drugCheck"><a href="drugref/drugCheckIndex.do">用药审查</a></li>
+		        <li id="drugCate"><a href="drugref/drugCateIndex.do">药物分类</a></li>
+		        <li id="indication"><a href="drugref/instruction_search_init.do">适应症</a></li>
+                <li id="drugWarning"><a href="drugref/getDrugWarningList.do">药物警讯</a></li>
+                <li id="newDrug"><a href="drugref/getNewDrugInfoList.do">新药进展</a></li>
+	        </ul>
+	    </div>
+	    <div class="search-big clearfix" id="quickDurgSearch">
+	    	<form id="searchForm" name="searchForm" action="drugref/drug_info_search.do">
+		        <span class="search-k-big-out">
+		            <input type="text" name="q" value="阿法替尼" id="q" class="search-k-big"/>
+		        </span>
+		        <input type="hidden" name="page" id="page" />
+		        <input id="doSearch" type="button" class="search-b btn" value="检 索"/>
+	        </form>
+	    </div>
+	</div>
+	<div class="left little_logo2"></div>
+</div>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+
+		var type = 'drugInfo';
+
+		//设置选中状态class="current"
+		var liId = "#" + type;
+		$(liId).text($(liId + ' > a').html());
+		$(liId).addClass('current');
+
+		//药物分类时隐藏药品名称检索
+		//if(type == 'drugCate'){
+		//	$('#quickDurgSearch').remove();
+		//}
+
+		var tipWord = "请输入拼音首字母或药名";
+
+		if(type == 'indication'){
+			tipWord = "请输入适应症";
+			$('#searchForm')[0].action = "drugref/instruction_search.do";
+		}
+
+		/**提交表单*/
+		var submitForm = function(){
+			if($("#q").val() == "" || $("#q").val() == tipWord){
+				return false;
+			}
+			$('#searchForm').submit();
+		}
+
+		$('#doSearch').click(function(){
+			submitForm();
+		});
+
+		$('#searchForm').submit(function(){
+			if($("#q").val() == "" || $("#q").val() == tipWord){
+				return false;
+			}
+		});
+
+		//输入提示
+		$("#q").texthint({blankValue:tipWord,blankValueClass:'hui-color',hasValueClass:'hei-color'});
+
+		//AutoComplete(适应症没有自动提示)
+		if(type != 'indication'){
+			var opt_q = {
+		      	serviceUrl: URL_DRUG_NAME_SUGGEST,
+			  	minChars:2,
+		      	width: 392,
+			  	maxHeight:115,
+		      	deferRequestBy: 0,
+		      	noCache: false,
+			  	onSelect: function(value, data){document.getElementById('q').value=value;}
+	    	};
+			jQuery('#q').autocomplete(opt_q);
+		}
+	});
+</script>
+	</div>
+	<div class="blue-bar">
+	    <div class="blue-left"></div>
+	    <div class="blue-center clearfix">
+	      	<span class="blue-left-white">药品检索结果</span>
+	        <span class="blue-right-white">检索到符合"<label class="red">阿法替尼</label>"的结果 共有
+	        	
+	        		<b class="blue"> 6 </b>条
+        		
+        		
+	        </span>
+	    </div>
+	    <div class="blue-right"></div>
+	</div>
+	<div class="search-content">
+		<div class="box-list">
+			
+				
+					<div class="box1">
+						<div class="medince-name">
+						<a href="drugref/drug_info.do?detailId=b0ce85585148271a3f760b57c739a211" target="_blank">
+							
+							
+							
+							
+								
+									
+										马来酸阿法替尼片
+									
+									
+								
+								
+							
+						</a>
+						</div>
+						
+							<div class="infomation">
+								
+									<div class="infomation-left clearfix">
+										<label class="left">【通用名称】</label>
+										<label class="info-width1 left">马来酸阿法替尼片</label>
+									</div>
+								
+								
+									<div class="infomation-right clearfix">
+										<label class="left">【英文名称】</label>
+										<label class="info-width1-1 left">Afatinib dimaleate Capsule</label>
+									</div>
+								
+								<div class="clear"></div>
+							</div>
+						
+						
+							
+							
+								<div class="infomation clearfix">
+									<label class="left">
+										
+											【商品名称】
+										
+										
+									</label>
+									<label class="info-width4 left">
+										吉泰瑞®
+										
+											Giotrif®
+										
+									</label>
+								</div>
+							
+						
+
+
+
+
+
+
+
+
+						
+							<div class="infomation clearfix">
+								<label class="left">【适应症】</label>
+								<label class="info-width3 left">
+									<p>本品适用于以下患者治疗：<br/>1.具有表皮生长因子受体(EGFR)基因敏感突变的局部晚期或转移性<span data-type="tag" data-tag="7" class="richtext-tag" title="非小细胞肺癌">非小细胞肺癌</span>&nbsp;(NSCLC)，既往未接受过EGFR酪氨酸激酶抑制剂(TKI)治疗。<br/>2.含铂化疗期间或化疗后疾病进展的局部晚期或转移性鳞状组织学类型的非小细胞肺癌(NSCLC)。</p>
+								</label>
+							</div>
+						
+						
+
+
+							
+								<div class="infomation clearfix">
+									<label class="left">
+										
+										
+											【企业名称】
+										
+									</label>
+									<label class="info-width4 left">
+										
+										
+											Boehringer Ingelheim Pharma GmbH &amp;Co.KG
+										
+										
+										
+									</label>
+								</div>
+							
+
+						
+						
+						
+						
+						
+					</div>
+				
+					<div class="box1">
+						<div class="medince-name">
+						<a href="drugref/drug_info.do?detailId=7dea8203059702e0653b0043b7f1dcf6" target="_blank">
+							
+							
+							
+							
+								
+									
+										马来酸阿法替尼片
+									
+									
+								
+								
+							
+						</a>
+						</div>
+						
+							<div class="infomation">
+								
+									<div class="infomation-left clearfix">
+										<label class="left">【通用名称】</label>
+										<label class="info-width1 left">马来酸阿法替尼片</label>
+									</div>
+								
+								
+									<div class="infomation-right clearfix">
+										<label class="left">【英文名称】</label>
+										<label class="info-width1-1 left">Afatinib dimaleate Capsule</label>
+									</div>
+								
+								<div class="clear"></div>
+							</div>
+						
+						
+							
+							
+						
+
+
+
+
+
+
+
+
+						
+						
+
+
+							
+								<div class="infomation clearfix">
+									<label class="left">
+										
+										
+											【企业名称】
+										
+									</label>
+									<label class="info-width4 left">
+										
+											上海创诺制药有限公司
+										
+										
+										
+										
+									</label>
+								</div>
+							
+
+						
+						
+						
+						
+						
+					</div>
+				
+					<div class="box1">
+						<div class="medince-name">
+						<a href="drugref/drug_info.do?detailId=87adbe758e7a545fbf4f45cb536e3089" target="_blank">
+							
+							
+							
+							
+								
+									
+										马来酸阿法替尼片
+									
+									
+								
+								
+							
+						</a>
+						</div>
+						
+							<div class="infomation">
+								
+									<div class="infomation-left clearfix">
+										<label class="left">【通用名称】</label>
+										<label class="info-width1 left">马来酸阿法替尼片</label>
+									</div>
+								
+								
+									<div class="infomation-right clearfix">
+										<label class="left">【英文名称】</label>
+										<label class="info-width1-1 left">Afatinib dimaleate Capsule</label>
+									</div>
+								
+								<div class="clear"></div>
+							</div>
+						
+						
+							
+							
+						
+
+
+
+
+
+
+
+
+						
+							<div class="infomation clearfix">
+								<label class="left">【适应症】</label>
+								<label class="info-width3 left">
+									<p>本品适用于以下患者治疗：</p><p>1.具有表皮生长因子受体（EGFR）基因敏感突变的局部晚期或转移性<span data-type="tag" data-tag="7" class="richtext-tag" title="非小细胞肺癌">非小细胞肺癌</span>（NSCLC），既往未接受过EGFR酪氨酸激酶抑制剂（TKI）治疗。</p><p>2.含铂化疗期间或化疗后疾病进展的局部晚期或转移性鳞状组织学类型的非小细胞肺癌（NSCLC）</p><p><br/></p>
+								</label>
+							</div>
+						
+						
+
+
+							
+								<div class="infomation clearfix">
+									<label class="left">
+										
+										
+											【企业名称】
+										
+									</label>
+									<label class="info-width4 left">
+										
+											正大天晴药业集团股份有限公司
+										
+										
+										
+										
+									</label>
+								</div>
+							
+
+						
+						
+						
+						
+						
+					</div>
+				
+					<div class="box1">
+						<div class="medince-name">
+						<a href="drugref/drug_info.do?detailId=5515ac9a725af1972985a6c9be8d48fd" target="_blank">
+							
+							
+							
+							
+								
+									
+										马来酸阿法替尼片
+									
+									
+								
+								
+							
+						</a>
+						</div>
+						
+							<div class="infomation">
+								
+									<div class="infomation-left clearfix">
+										<label class="left">【通用名称】</label>
+										<label class="info-width1 left">马来酸阿法替尼片</label>
+									</div>
+								
+								
+									<div class="infomation-right clearfix">
+										<label class="left">【英文名称】</label>
+										<label class="info-width1-1 left">Afatinib dimaleate Capsule</label>
+									</div>
+								
+								<div class="clear"></div>
+							</div>
+						
+						
+							
+							
+						
+
+
+
+
+
+
+
+
+						
+						
+
+
+							
+								<div class="infomation clearfix">
+									<label class="left">
+										
+										
+											【企业名称】
+										
+									</label>
+									<label class="info-width4 left">
+										
+											江苏天士力帝益药业有限公司
+										
+										
+										
+										
+									</label>
+								</div>
+							
+
+						
+						
+						
+						
+						
+					</div>
+				
+					<div class="box1">
+						<div class="medince-name">
+						<a href="drugref/drug_info.do?detailId=9b39f4d12b25ee35786aeb29376c29b9" target="_blank">
+							
+							
+							
+							
+								
+									
+										马来酸阿法替尼片
+									
+									
+								
+								
+							
+						</a>
+						</div>
+						
+							<div class="infomation">
+								
+									<div class="infomation-left clearfix">
+										<label class="left">【通用名称】</label>
+										<label class="info-width1 left">马来酸阿法替尼片</label>
+									</div>
+								
+								
+									<div class="infomation-right clearfix">
+										<label class="left">【英文名称】</label>
+										<label class="info-width1-1 left">Afatinib dimaleate Capsule</label>
+									</div>
+								
+								<div class="clear"></div>
+							</div>
+						
+						
+							
+							
+						
+
+
+
+
+
+
+
+
+						
+							<div class="infomation clearfix">
+								<label class="left">【适应症】</label>
+								<label class="info-width3 left">
+									本品适用于以下患者治疗： <br/>
+1. 具有表皮生长因子受体（EGFR）基因敏感突变的局部晚期或转移性<span data-type="tag" data-tag="7" class="richtext-tag" title="非小细胞肺癌">非小细胞肺癌</span>(NSCLC)，既往未接受过 EGFR 酪氨酸激酶抑制剂（TKI）治疗。 <br/>
+2. 含铂化疗期间或化疗后疾病进展的局部晚期或转移性鳞状组织学类型的非小细胞肺癌(NSCLC)
+
+								</label>
+							</div>
+						
+						
+
+
+							
+								<div class="infomation clearfix">
+									<label class="left">
+										
+										
+											【企业名称】
+										
+									</label>
+									<label class="info-width4 left">
+										
+											江苏豪森药业集团有限公司
+										
+										
+										
+										
+									</label>
+								</div>
+							
+
+						
+						
+						
+						
+						
+					</div>
+				
+					<div class="box1">
+						<div class="medince-name">
+						<a href="drugref/drug_info.do?detailId=4488986d77b5f4e5111a037d99dc9a2e" target="_blank">
+							
+							
+							
+							
+								
+									
+										马来酸阿法替尼片
+									
+									
+								
+								
+							
+						</a>
+						</div>
+						
+							<div class="infomation">
+								
+									<div class="infomation-left clearfix">
+										<label class="left">【通用名称】</label>
+										<label class="info-width1 left">马来酸阿法替尼片</label>
+									</div>
+								
+								
+									<div class="infomation-right clearfix">
+										<label class="left">【英文名称】</label>
+										<label class="info-width1-1 left">Afatinib dimaleate Capsule</label>
+									</div>
+								
+								<div class="clear"></div>
+							</div>
+						
+						
+							
+							
+								<div class="infomation clearfix">
+									<label class="left">
+										
+										
+											【商标名称】
+										
+									</label>
+									<label class="info-width4 left">
+										瑞菲乐
+										
+									</label>
+								</div>
+							
+						
+
+
+
+
+
+
+
+
+						
+							<div class="infomation clearfix">
+								<label class="left">【适应症】</label>
+								<label class="info-width3 left">
+									<p>本品适用于以下患者治疗：<br/>1. 具有表皮生长因子受体（EGFR）基因敏感突变的局部晚期或转移性<span data-type="tag" data-tag="7" class="richtext-tag" title="非小细胞肺癌">非小细胞肺癌</span>（NSCLC），既往未接受过EGFR酪氨酸激酶抑制剂（TKI）治疗。 <br/>2. 含铂化疗期间或化疗后疾病进展的局部晚期或转移性鳞状组织学类型的非小细胞肺癌（NSCLC）</p>
+								</label>
+							</div>
+						
+						
+
+
+							
+								<div class="infomation clearfix">
+									<label class="left">
+										
+										
+											【企业名称】
+										
+									</label>
+									<label class="info-width4 left">
+										
+											齐鲁制药有限公司
+										
+										
+										
+										
+									</label>
+								</div>
+							
+
+						
+						
+						
+						
+						
+					</div>
+				
+			
+			
+			 
+
+
+
+
+<div class="fenye">
+	<ul>
+		<span>共1页6条，当前第1页</span>
+		
+	</ul>
+</div>
+
+		</div>
+	</div>
+	
+
+
+<div class="footer">
+	<div class="kingyee">
+		北京医脉互通公司<span style="padding-right:20px;"></span>版权所有 
+    </div>
+    <div><a style="color: #999;" href="">京ICP备13043379号-5</a>© 2005－2022 medlive.cn, all rights reserved</div>
+</div>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F62d92d99f7c1e7a31a11759de376479f' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+(function() {
+var u="//tongji.medlive.cn/";
+var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'tj.js'; s.parentNode.insertBefore(g,s);
+})();
+</script>
+<script type="text/javascript">
+    function closeFooterBanner(){
+        $("#footerBanner").hide();
+    }
+</script>
+
+
+    
+
+<!--2018-09-06 二维码 start -->
+<!--
+<div class="fixed_erweima_box">
+    <div>下载用药参考</div>
+    <div class="fixed_erweima">
+        <img src="res/drugref/fixed_erweima.png" />
+    </div>
+</div>
+-->
+<!--2018-09-06 end-->
+
+</body>
+</html>

@@ -1,0 +1,525 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="https://webres.medlive.cn/favicon.ico">
+    <link rel="apple-touch-icon" href="https://webres.medlive.cn/favicon.ico">
+    <link rel="icon" href="https://webres.medlive.cn/favicon.ico" type="image/x-icon" />
+    <title>会员登录_医脉通_medlive.cn</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="keywords" content="会员登录_医脉通_medlive.cn">
+    <meta name="description" content="会员登录_医脉通_medlive.cn">
+    <link rel="stylesheet" type="text/css" href="https://webres.medlive.cn/passport/pc/css/index.css?_dt=2"/>
+    <link rel="stylesheet" type="text/css" href="https://webres.medlive.cn/passport/captcha/css/pc.css"/>
+</head>
+<body>
+<div class="large-box login-box">
+    <div class="page-header">
+        <div class="wrap1 clearfix">
+            <a href="https://www.medlive.cn"><img class="logo" src="https://webres.medlive.cn/passport/pc/img/logo.png"></a>
+            <span class="logo-name">您的临床决策好帮手</span>
+        </div>
+    </div>
+    <div class="page-main">
+        <div class="wrap1 main-box clearfix">
+            <div class="main-left">
+                <a id="adLink" href="javascript:void(0);" style="display: none;"><img id="adImg" src=""></a>
+            </div>
+            <div class="main-right">
+                <div class="login-rightTab clearfix">
+                    <div class="rightTab-L">扫码快捷登录</div>
+                    <div class="rightTab-R"></div>
+                </div>
+                <!--密码and验证码登录-->
+                <form id="login_form" class="fm-v clearfix" action="/auth/login;jsessionid=3A3D5DA9BAFB0C94A04C3FB230B6C125?service=https%3A%2F%2Fdrugs.medlive.cn%2Fdrugref%2Fdrug_info_search.do%3Fq%3D%25E5%25BA%25A6%25E6%2599%25AE%25E5%2588%25A9%25E5%25B0%25A4%25E5%258D%2595%25E6%258A%2597" method="post">
+                    <input type="hidden" id="loginType" name="loginType" value="password"/>
+                    <input type="hidden" id="appName" name="appName" value=""/>
+                    <input type="hidden" name="lt" value="LT-10966632-YLdajj0ZeftBpLQUl4H2rwb9fVAdBU"/>
+                    <input type="hidden" name="execution" value="e1s1"/>
+                    <input type="hidden" name="_eventId" value="submit"/>
+                    <input type="hidden" id="key" value="GVJD5Ola4s3VfeTc"/>
+                    <div class="login-type-box wrap2">
+                        <a class="login-href1 clearfix" id="regLink" href="http://setting.medlive.cn/reg"><div>注册账号&nbsp;</div><div class="icon4"></div></a>
+                        <div class="type-password">
+                            <div class="loginInput-li">
+                                <input class="login-input-ones js-input" type="text" name="username" id="username"
+                                       value="" autocomplete="false">
+                                <div class="placeHolder">账号/手机号/邮箱</div>
+                            </div>
+                            <div class="loginInput-li">
+                                <input class="login-input-ones js-input" autocomplete="off" id="showPassword" type="password">
+                                <div class="placeHolder">密码</div>
+                                <input name="password" id="password" type="hidden">
+                            </div>
+                            <div class="code-login-desc">
+                                <div class="false-code login_wrong" style="opacity: 0;">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="type-code">
+                            <div class="loginInput-li">
+                                <input class="login-input-ones js-input" type="text" name="tel" id="tel" value="">
+                                <div class="placeHolder">手机号（未注册手机号将自动注册）</div>
+                            </div>
+                            <div class="loginInput-li loginInput-li-twos clearfix">
+                                <input class="login-input-twos js-input" type="text" name="smsCode" id="smsCode" value="">
+                                <div class="placeHolder get-placeHolder">验证码</div>
+                                <button type="button" class="get-code" id="getSmsCodeBtn" style="z-index: 99;">获取验证码</button>
+                            </div>
+                            <div class="code-login-desc">
+                                <div class="false-code login_wrong" style="opacity: 0;">&nbsp;</div>
+                            </div>
+                            <div id="" class="register-radioWrap clearfix">
+                                <label class="opt-lable clearfix"><input id="agreeto" class="opt" type="checkbox" name="demo-checkbox1" checked="checked">
+                                    <span class="opt-input"></span>我已阅读并遵守医脉通
+                                </label>
+                                <a class="radio-href" href="https://www.medlive.cn/service/disclaimer" target="_blank">用户协议</a>
+                                <label class="opt-lable clearfix">
+                                    <span class="opt-input"></span>和
+                                </label>
+                                <a class="radio-href" href="https://www.medlive.cn/service/privacy" target="_blank">隐私政策</a>
+                            </div>
+                        </div>
+                        <input style="display: none;" name="rememberMe" type="checkbox" value="true" id="mind"
+                               checked="checked"/>
+                        <button name="loginsubmit" type="submit" id="loginsubmit" tabindex=1 class="login-submit">登录</button>
+                        <!--该按钮不可点击的样式为login-submit-disabled类名，可直接追加上去并且加disabled属性。-->
+                        <div class="clearfix">
+                            <div id="passwordCodeChangeBtn" class="bottom-tabBtn">手机验证码登录</div>
+                            <a class="login-href2" id="lostPwdLink" style="display: none;" href="http://setting.medlive.cn/user/lostpwd">忘记密码？</a>
+                        </div>
+                        <div class="other-login">
+                            <div class="other-login-top clearfix">
+                                <div class="lines1"></div>
+                                <div class="other-login-desc">使用第三方账号登录</div>
+                                <div class="lines2"></div>
+                            </div>
+                            <div class="other-login-bottom">
+                                <a href="http://setting.medlive.cn/connect/auth_login/wechat">
+                                    <div class="wx-icon"></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="qr-login-box">
+                    <div class="qr-imgBox">
+                        <img id="qrImg" src="">
+                        <div class="qr-in-mask" style="display: none;">
+                            <div class="qrIn-mask-desc">二维码失效</div>
+                            <button class="qr-ajaxBtn">点击刷新</button>
+                        </div>
+                    </div>
+                    <div class="qr-login-desc">请使用<span>"医脉通app"</span>扫码登录</div>
+                    <div class="qr-login-desc2"> （v5.4以上版本可在“我的”模块左上角扫码登录）</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <ul class="footer-top clearfix">
+            <li><a href="/service/aboutus" target="_blank">关于我们</a>|</li>
+            <li><a href="/service/contact" target="_blank">联系我们</a>|</li>
+            <li><a href="/service/disclaimer" rel="nofollow" target="_blank">免责声明</a>|</li>
+            <li><a href="/service/certificate" target="_blank">资格证书</a>|</li>
+            <li><a href="http://www.kingyee.com.cn" target="_blank">公司产品</a></li>
+        </ul>
+        <div class="footer-btm">
+            北京医脉互通公司 版权所有 <a class="footer-href" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502036930">京公网安备11010502036930</a><a class="footer-href" href="http://beian.miit.gov.cn">京ICP备13043379号-5</a>© 2005－2022 medlive.cn, all rights reserved
+        </div>
+    </div>
+</div>
+
+
+<div id="captchaCover" class="cover" style="display: none;"></div>
+<div id="captchaDiv" class="pop-div overflow" style="display: none;">
+    <div class="verify-div">
+        <div id="captchaImgDiv" ></div>
+        <div class="pop-tip clear">
+            <div class="tip-text">请按顺序点击：<span id="captchaCode" class="code-num">4P8K</span></div>
+            <a id="captchaRefreshBtn" href="javascript:void(0);"  class="refresh-code">看不清，换一个<i class="refresh-icon"></i></a>
+            <div style="clear: both;"></div>
+        </div>
+        <div class="close-div">
+            <img id="captchaCloseBtn" src="https://webres.medlive.cn/passport/captcha/images/close.png" alt="">
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script type="text/javascript" src="https://webres.medlive.cn/passport/js/jquery-3.6.1.min.js"></script>
+<script type="text/javascript" src="https://yz.medlive.cn/common/piclick.js?_dt=20200730"></script>
+<script type="text/javascript" src="https://webres.medlive.cn/passport/js/crypto-js.js"></script>
+<script type="text/javascript" src="https://webres.medlive.cn/passport/js/common.js?_dt=20220905"></script>
+
+<script>
+    var piclick;
+    $(document).ready(function () {
+        // 获取广告
+        function getAd(){
+            $.ajax({
+                url: "adList",
+                dataType: "json",
+                success: function(res) {
+                    if(res && res.error){
+                        $("#adLink").attr("href", "//medapp.medlive.cn/");
+                        $("#adImg").attr("src", "https://webres.medlive.cn/passport/pc/img/login-ad.jpg");
+                    }else if (res && res.adListBean.success_msg) {
+                        data = res.adListBean.data;
+                        $("#adLink").attr("href", data[0].url);
+                        $("#adImg").attr("src", data[0].advert_img);
+                    }else{
+                        $("#adLink").attr("href", "//medapp.medlive.cn/");
+                        $("#adImg").attr("src", "https://webres.medlive.cn/passport/pc/img/login-ad.jpg");
+                    }
+                    $("#adLink").show();
+                }
+            })
+        }
+
+        /**在登录失败后，画面再打开，初始化显示*/
+        function init(){
+            getAd();
+            // 初始化tab
+            var errMsg = $("#err_msg").text();
+            var index = errMsg.indexOf('code-');
+
+            if(errMsg != ""){
+                var index = errMsg.indexOf('code-');
+                if(index != 0){
+                    // 不以code-开头
+                    changeDisplay("password");
+                }else{
+                    changeDisplay("code");
+                }
+            }else{
+                changeQROrCommomLogin();
+                changeDisplay("password");
+            }
+            errMsg = errMsg.replace("code-", "").replace("password-", "");
+            $(".login_wrong").text(errMsg);
+            $(".login_wrong").css("opacity", "1");
+
+
+            // 通过浏览器的返回，可能保存之前输入的值，而且浮动层还在。因此如果有值，自动隐藏
+            if($("#username").val() != ''){
+                $("#username").next(".placeHolder").hide();
+            }
+            if($("#tel").val() != ''){
+                $("#tel").next(".placeHolder").hide();
+            }
+            if($("#smsCode").val() != ''){
+                $("#smsCode").next(".placeHolder").hide();
+            }
+            if($("#password").val() != ''){
+                $("#password").next(".placeHolder").hide();
+            }
+        }
+
+        init();
+
+
+        $(".login-rightTab").off().on("click",function () {
+            changeQROrCommomLogin();
+        });
+
+        //
+        function changeQROrCommomLogin(){
+            if(!$(".login-rightTab").hasClass("qr-goTab")){
+                $(".login-rightTab").addClass("qr-goTab").find(".rightTab-L").html("电脑登录");
+                $(".login-type-box").hide();
+                $(".qr-login-box").show();
+                getQRImg();
+            }else{
+                $(".login-rightTab").removeClass("qr-goTab").find(".rightTab-L").html("扫码快捷登录");
+                $(".login-type-box").show();
+                $(".qr-login-box").hide();
+                clearInterval(checkQRStatusinterval);
+            }
+        }
+
+        // 手机登录 OR 账户密码登录的切换
+        $("#passwordCodeChangeBtn").off().on("click",function () {
+            if(!$(this).hasClass("jsGo-code")){
+                changeDisplay("code");
+            }else{
+                changeDisplay("password");
+            }
+            hideMsg();
+        });
+
+
+        $(".js-input").focus(function () {
+            $(this).next(".placeHolder").hide();
+        });
+        $(".js-input").on("input",function () {
+            if($(this).val().length==0){
+                $(this).next(".placeHolder").show();
+            }else{
+                $(this).next(".placeHolder").hide();
+            }
+        });
+        $(".js-input").blur(function () {
+            if($(this).val().length==0){
+                $(this).next(".placeHolder").show();
+            }else {
+                $(this).next(".placeHolder").hide();
+            }
+        });
+
+        // 取得手机验证码
+        $("#getSmsCodeBtn").bind("click", function () {
+            hideMsg();
+
+            var tel = $("#tel").val();
+            if(tel == '' || !isTelNo(tel)) {
+                showMsg("请输入正确的手机号。");
+            } else {
+                // 加载验证码
+                showCaptcha();
+            }
+        });
+
+
+        piclick = new Piclick('captchaImgDiv',{
+            appid:'kingyee002',
+            // 图片加载完成后调用，str是需要点击的字
+            onLoadSuccess:function(str) {
+                $('#captchaCode').text(str);
+            },
+            // 校验成功后调用，data={token:'',validate:''} 暂时只有token有用
+            onVerifySuccess:function(data){
+                hideCaptcha();
+                $("#getSmsCodeBtn").attr("disabled", "disabled");
+                $.ajax({
+                    type: "GET",
+                    url: "getSmsCode",
+                    data: {
+                        "tel": $("#tel").val(),
+                        "token": data.token,
+                        "type": "pc",
+                    },
+                    dataType: 'json',
+                    success: function (response) {
+                        if(response.errMsg){
+                            $("#getSmsCodeBtn").removeAttr("disabled");
+                            showMsg(response.errMsg);
+                        }else{
+                            countdown();
+                        }
+                    }
+                });
+            },
+            // type=1为图片信息加载失败 2位校验失败
+            onError:function(type, msg) {
+                // console.error(msg);
+                if(type === 2) {
+                    piclick.loadImage();
+                }
+            }
+        });
+        $('#captchaRefreshBtn').click(function(){piclick.loadImage()});
+
+        $("#captchaCloseBtn").click(hideCaptcha);
+
+        $(".qr-ajaxBtn").click(function (){
+            getQRImg()
+        });
+    });
+
+    /**
+     * 切换code或者password两种模式
+     * @param type
+     */
+    function changeDisplay(type){
+        if(type == "code"){
+            $("#passwordCodeChangeBtn").text("账号密码登录");
+            $("#passwordCodeChangeBtn").addClass("jsGo-code");
+            $(".type-password").hide();
+            $(".type-code").show();
+            $("#loginType").val("code");
+            $("#lostPwdLink").css("display", "none");
+            $('#agreetoDiv').show();
+            // $("#rememberMeDiv").css("margin-bottom", "0px");
+        }else{
+            $("#passwordCodeChangeBtn").text("手机验证码登录");
+            $("#passwordCodeChangeBtn").removeClass("jsGo-code");
+            $(".type-password").show();
+            $(".type-code").hide();
+            $("#loginType").val("password");
+            $("#lostPwdLink").css("display", "block");
+            $('#agreetoDiv').hide();
+            // $("#rememberMeDiv").css("margin-bottom", "18px");
+        }
+    }
+
+    function countdown(){
+        // 倒计时
+        var sec = 60;
+        var inter = setInterval(function () {
+            $("#getSmsCodeBtn").text("重新获取(" + sec + ")");
+            if (sec == 0) {
+                $("#getSmsCodeBtn").text("重新获取");
+                $("#getSmsCodeBtn").removeAttr("disabled");
+                sec = 60;
+                clearInterval(inter);
+            }
+            sec--;
+        }, 1000);
+    }
+
+    function showCaptcha() {
+        // 加载验证码
+        piclick.loadImage();
+        $("#captchaCover").show();
+        $("#captchaDiv").show();
+    }
+
+    function hideCaptcha() {
+        $("#captchaCover").hide();
+        $("#captchaDiv").hide();
+    }
+
+
+    $("#login_form").bind("submit", checkLogin);
+    //用户登录的输入校验
+    function checkLogin() {
+        var username = $.trim($("#username").val());
+        var password = $.trim($("#showPassword").val());
+        var tel = $.trim($("#tel").val());
+        var smsCode = $.trim($("#smsCode").val());
+
+        if ($("#loginType").val() == "password") {
+            if(username == "" || password == ""){
+                showMsg("请输入用户名和密码");
+                return false;
+            } else{
+                $("#password").val(encrypt(password));
+            }
+        } else if ($("#loginType").val() == "code") {
+            if(tel == "" || smsCode == ""){
+                showMsg("请输入手机号和验证码");
+                return false;
+            }else if(!isTelNo(tel)){
+                showMsg("请输入正确的手机号");
+                return false;
+            }
+            if(!$("#agreeto").attr("checked")) {
+                showMsg("需要同意《医脉通网络服务协议》");
+                return false;
+            }
+        }
+        return true;
+        // $("#login_form").get(0).submit();
+    }
+
+    function showMsg(msg) {
+        $(".login_wrong").html(msg);
+    }
+
+    function hideMsg() {
+        $(".login_wrong").html("&nbsp;");
+    }
+
+    function isTelNo(tel){
+        var patrn=/(^\+86)?1\d{10}$/;
+        if (!patrn.exec(tel)) return false
+        return true
+    }
+
+    // 获取QR登录图片
+    function getQRImg() {
+        var imgUrl = "getQRCode?size=260&t=" + (new Date).getTime();
+        var qrImg = $("#qrImg");
+        var qrMask = $(".qr-in-mask");
+        qrImg[0].src = imgUrl;
+        qrImg[0].onload = function() {
+            qrMask.hide();
+            qrImg.show();
+            checkQRStatus();
+        };
+        qrImg[0].onerror = function() {
+            qrImg.hide();
+            qrMask.show();
+        };
+    };
+    // 获取QR登录状态
+    var getQRStatus = function(a) {
+        var qrToken = getCookie("qrToken");
+        $.ajax({
+            url: "getQRLoginStatus",
+            dataType: "json",
+            data: {
+                qrToken: qrToken,
+                rememberMe: true
+            },
+            cache: false,
+            success: function(res) {
+                if (res) {
+                    var code = res.code;
+                    if(code == "00000"){
+                        // 成功
+                        clearInterval(checkQRStatusinterval);
+                        var service = getQueryString("service");;
+                        if(service == null){
+                            service = "https://www.medlive.cn";
+                        }
+                        window.location.href = service;
+                    }else if(code == "51203"){
+                        // waiting
+                    } else {
+                        // 出错
+                        clearInterval(checkQRStatusinterval);
+                        if(code == "10001" || code == "51202"){
+                            $(".qrIn-mask-desc").text("二维码失效");
+                        }else{
+                            $(".qrIn-mask-desc").text(code + ":" + res.msg);
+                        }
+                        $(".qr-in-mask").show();
+                    }
+                }
+            }
+        })
+    };
+    var checkQRStatusinterval = null;
+    function checkQRStatus() {
+        checkQRStatusinterval = setInterval(function() {
+            getQRStatus();
+        }, 3000);
+    }
+
+
+    function getCookie(e) {
+        var t = document.cookie.match(new RegExp("(^| )" + e + "=([^;]*)(;|$)"));
+        return null != t ? unescape(t[2]) : null
+    }
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+</script>
+
+<script type="text/javascript">
+    var service = encodeURIComponent("https://drugs.medlive.cn/drugref/drug_info_search.do?q=%E5%BA%A6%E6%99%AE%E5%88%A9%E5%B0%A4%E5%8D%95%E6%8A%97")
+    if (service != null && service != "") {
+        $("#regLink").attr("href", $("#regLink").attr("href") + "?url=" + service);
+        $("#lostPwdLink").attr("href", $("#lostPwdLink").attr("href") + "?url=" + service);
+    }
+
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F62d92d99f7c1e7a31a11759de376479f' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</html>
+
