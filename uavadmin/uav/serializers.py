@@ -15,6 +15,17 @@ class UavVehicleSerializer(CustomModelSerializer):
         read_only_fields = ["id"]
 
 
+class UavMapSerializer(CustomModelSerializer):
+    """
+    序列化器
+    """
+
+    class Meta:
+        model = UavMap
+        fields = "__all__"
+        read_only_fields = ["id"]
+
+
 class UavAirportSerializer(CustomModelSerializer):
     """
     序列化器

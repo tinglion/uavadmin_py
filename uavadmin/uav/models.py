@@ -22,13 +22,38 @@ class UavVehicle(CoreModel):
         return f"{self.name}"
 
 
+class UavMap(CoreModel):
+    name = models.CharField(max_length=64, verbose_name="name")
+
+    longitude = models.FloatField(verbose_name="经度")
+    latitude = models.FloatField(verbose_name="纬度")
+    altitude = models.FloatField(verbose_name="海拔")
+
+    status = models.IntegerField(verbose_name="状态", default=0, help_text="[]")
+
+    class Meta:
+        db_table = "uav_map"
+        verbose_name = "UAV"
+        verbose_name_plural = verbose_name
+        ordering = ("-create_datetime",)
+        app_label = "uav"
+
+    def __str__(self):
+        return f"{self.name}"
+
+
 class UavAirport(CoreModel):
     name = models.CharField(max_length=64, verbose_name="name")
-    city = models.CharField(max_length=64, verbose_name="city")
+    city = models.CharField(max_length=64, verbose_name="city", null=True)
 
-    longitude = models.FloatField(max_length=64, verbose_name="经度")
-    latitude = models.FloatField(max_length=64, verbose_name="纬度")
-    altitude = models.FloatField(max_length=64, verbose_name="海拔")
+    map_id = models.BigIntegerField()
+    x = models.FloatField(verbose_name="相对坐标，米")
+    y = models.FloatField(verbose_name="相对坐标，米")
+    z = models.FloatField(verbose_name="相对坐标，米")
+
+    longitude = models.FloatField(verbose_name="经度", null=True)
+    latitude = models.FloatField(verbose_name="纬度", null=True)
+    altitude = models.FloatField(verbose_name="海拔", null=True)
 
     throughput = models.IntegerField(verbose_name="日吞吐量", default=0)
     num_wait_launch = models.IntegerField(
@@ -53,10 +78,16 @@ class UavAirport(CoreModel):
 
 class UavBasement(CoreModel):
     uid = models.CharField(max_length=64, verbose_name="基站编号")
-    city = models.CharField(max_length=64, verbose_name="city")
+    city = models.CharField(max_length=64, verbose_name="city", null=True)
 
-    longitude = models.FloatField(max_length=64, verbose_name="经度")
-    latitude = models.FloatField(max_length=64, verbose_name="纬度")
+    map_id = models.BigIntegerField()
+    x = models.FloatField(verbose_name="相对坐标，米")
+    y = models.FloatField(verbose_name="相对坐标，米")
+    z = models.FloatField(verbose_name="相对坐标，米")
+
+    longitude = models.FloatField(verbose_name="经度", null=True)
+    latitude = models.FloatField(verbose_name="纬度", null=True)
+    altitude = models.FloatField(verbose_name="海拔", null=True)
 
     eirp = models.CharField(max_length=64, verbose_name="eirp")
     band_width = models.CharField(max_length=64, verbose_name="band_width")
@@ -77,6 +108,7 @@ class UavBasement(CoreModel):
 
 class UavFlight(CoreModel):
     vehicle_id = models.BigIntegerField(verbose_name="飞行器ID")
+    map_id = models.BigIntegerField()
 
     launch_airport = models.BigIntegerField(verbose_name="起飞机场", null=True)
     launch_time = models.DateTimeField(verbose_name="起飞时间", null=True)
