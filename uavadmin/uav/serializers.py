@@ -9,6 +9,14 @@ class UavVehicleSerializer(CustomModelSerializer):
     序列化器
     """
 
+    name_map = serializers.SerializerMethodField()
+
+    def get_name_map(self, obj: UavVehicle):
+        try:
+            return UavMap.objects.get(id=obj.map_id).name
+        except Exception as e:
+            return None
+
     class Meta:
         model = UavVehicle
         fields = "__all__"
@@ -19,6 +27,22 @@ class UavMapSerializer(CustomModelSerializer):
     """
     序列化器
     """
+
+    num_airport = serializers.SerializerMethodField()
+
+    def get_num_airport(self, obj: UavMap):
+        try:
+            return len(UavAirport.objects.filter(map_id=obj.id))
+        except Exception as e:
+            return None
+
+    num_basement = serializers.SerializerMethodField()
+
+    def get_num_basement(self, obj: UavMap):
+        try:
+            return len(UavBasement.objects.filter(map_id=obj.id))
+        except Exception as e:
+            return None
 
     class Meta:
         model = UavMap
@@ -31,6 +55,14 @@ class UavAirportSerializer(CustomModelSerializer):
     序列化器
     """
 
+    name_map = serializers.SerializerMethodField()
+
+    def get_name_map(self, obj: UavAirport):
+        try:
+            return UavMap.objects.get(id=obj.map_id).name
+        except Exception as e:
+            return None
+
     class Meta:
         model = UavAirport
         fields = "__all__"
@@ -41,6 +73,14 @@ class UavBasementSerializer(CustomModelSerializer):
     """
     序列化器
     """
+
+    name_map = serializers.SerializerMethodField()
+
+    def get_name_map(self, obj: UavBasement):
+        try:
+            return UavMap.objects.get(id=obj.map_id).name
+        except Exception as e:
+            return None
 
     class Meta:
         model = UavBasement

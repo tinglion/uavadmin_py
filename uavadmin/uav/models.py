@@ -9,6 +9,9 @@ class UavVehicle(CoreModel):
     uid = models.CharField(max_length=64, verbose_name="设备识别码")
     model = models.CharField(max_length=64, verbose_name="型号")
 
+    map_id = models.BigIntegerField()
+    airport_id = models.BigIntegerField()
+
     status = models.IntegerField(verbose_name="状态", default=0, help_text="[]")
 
     class Meta:
