@@ -18,7 +18,7 @@ class UavVehicle(CoreModel):
         db_table = "uav_vehicle"
         verbose_name = "UAV"
         verbose_name_plural = verbose_name
-        ordering = ("-create_datetime",)
+        ordering = ("create_datetime",)
         app_label = "uav"
 
     def __str__(self):
@@ -38,7 +38,7 @@ class UavMap(CoreModel):
         db_table = "uav_map"
         verbose_name = "UAV"
         verbose_name_plural = verbose_name
-        ordering = ("-create_datetime",)
+        ordering = ("create_datetime",)
         app_label = "uav"
 
     def __str__(self):
@@ -72,7 +72,7 @@ class UavAirport(CoreModel):
         db_table = "uav_airport"
         verbose_name = "UAV"
         verbose_name_plural = verbose_name
-        ordering = ("-create_datetime",)
+        ordering = ("create_datetime",)
         app_label = "uav"
 
     def __str__(self):
@@ -102,7 +102,7 @@ class UavBasement(CoreModel):
         db_table = "uav_basement"
         verbose_name = "UAV"
         verbose_name_plural = verbose_name
-        ordering = ("-create_datetime",)
+        ordering = ("create_datetime",)
         app_label = "uav"
 
     def __str__(self):
@@ -136,7 +136,7 @@ class UavFlight(CoreModel):
         db_table = "uav_flight"
         verbose_name = "UAV"
         verbose_name_plural = verbose_name
-        ordering = ("-create_datetime",)
+        ordering = ("create_datetime",)
         app_label = "uav"
 
     def __str__(self):

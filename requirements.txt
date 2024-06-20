@@ -44,3 +44,4 @@ django_pandas
 #
 pycryptodome
 func_timeout
+paho-mqtt

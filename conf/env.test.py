@@ -56,10 +56,10 @@ MQTT_CONF = dict(
     MQTT_BROKER="10.19.53.207",
     MQTT_PORT=1883,
     MQTT_KEEPALIVE_INTERVAL=60,
-    MQTT_TOPIC_PREFIX="asmote/drone/data",
-    MQTT_TOPIC="asmote/drone/data/6",
+    MQTT_TOPIC="asmote/drone/data/#",
     MQTT_USERNAME="asmote",  # MQTT用户名
     MQTT_PASSWORD="",  # MQTT密码
 )
+
 
 TEMP_DIR = "/tmp/uav"

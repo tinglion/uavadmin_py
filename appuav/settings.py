@@ -448,3 +448,5 @@ OPENAI_CONF = locals().get("OPENAI_CONF", "")
 AI_CONF = locals().get("AI_CONF", "")
 
 TEMP_DIR = locals().get("TEMP_DIR", "")
+
+MQTT_CONF = locals().get("MQTT_CONF", "")
