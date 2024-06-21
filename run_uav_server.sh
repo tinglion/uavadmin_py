@@ -2,7 +2,7 @@ ps axuf | grep appuav.asgi:appuav | grep 9701 | awk '{print $2}' | xargs -n 1 ki
 echo "killed main"
 sleep 1
 
-pids=$(ps axuf | grep uavadmin2 | grep -v grep | grep -v celery | awk '{print $2}')
+pids=$(ps axuf | grep uavadmin | grep -v grep | grep -v celery | awk '{print $2}')
 echo $pids
 for pid in $pids; do
     kill -9 "$pid"

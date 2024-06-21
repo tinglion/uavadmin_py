@@ -22,6 +22,9 @@
 ## opt
 
 ```bash
+apt-get install -y default-libmysqlclient-dev
+
+
 #4. install pip dependence
 pip install -r requirements.txt
 #8. start backend
