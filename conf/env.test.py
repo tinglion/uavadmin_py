@@ -53,12 +53,15 @@ COLUMN_EXCLUDE_APPS = []
 DB_CONF = {}
 
 MQTT_CONF = dict(
+    MQTT_BROKER_PUBLIC="123.56.127.200",
     MQTT_BROKER="10.19.53.207",
     MQTT_PORT=1883,
     MQTT_KEEPALIVE_INTERVAL=60,
     MQTT_TOPIC="asmote/drone/data/#",
     MQTT_USERNAME="asmote",  # MQTT用户名
     MQTT_PASSWORD="",  # MQTT密码
+    CLIENT_ID_S="asmote_p_s",
+    CLIENT_ID_R="asmote_p_r",
 )
 
 

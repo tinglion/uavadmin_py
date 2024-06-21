@@ -77,7 +77,7 @@ class UavFlightViewSet(CustomModelViewSet):
             flight = UavFlight.objects.get(id=id)
             for position in flight.trace:
                 mqtt_client.publish_message(json.dumps(position))
-                time.sleep(3)
+                time.sleep(1)
             return SuccessResponse()
         except Exception as e:
             logger.error(f"ERROR {id} {e}")

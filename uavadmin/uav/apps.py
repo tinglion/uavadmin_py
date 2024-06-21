@@ -11,5 +11,6 @@ class UavConfig(AppConfig):
 
     def ready(self):
         if os.environ.get("RUN_MAIN") == "true":
+            print(f"@sting start mqtt")
             # 在Django应用启动时启动MQTT客户端
             start_mqtt_client()
