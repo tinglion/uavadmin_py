@@ -3,6 +3,7 @@
 import paho.mqtt.client as mqtt
 
 from appuav.settings import MQTT_CONF
+from uavadmin.uav.models import UavTrack
 
 
 # 回调函数：连接时
@@ -14,7 +15,10 @@ def on_connect(client, userdata, flags, rc):
 
 # 回调函数：接收消息时
 def on_message(client, userdata, msg):
-    print(f"Received message: {msg.payload.decode()} on topic {msg.topic}")
+    # TODO 保存历史轨迹
+    content = msg.payload.decode()
+    print(f"Received message: {content} on topic {msg.topic}")
+    UavTrack.objects.create(topic=msg.topic, pos=content)
 
 
 # mqtt_client.py (添加断开连接处理)
@@ -26,24 +30,20 @@ def on_disconnect(client, userdata, rc):
 
 # 创建MQTT客户端
 client = mqtt.Client(client_id=MQTT_CONF["CLIENT_ID_R"])
-client.on_connect = on_connect
-client.on_message = on_message
-client.on_disconnect = on_disconnect
-# 设置用户名和密码
-client.username_pw_set(MQTT_CONF["MQTT_USERNAME"], MQTT_CONF["MQTT_PASSWORD"])
-
-
 ## client_sender
 client_sender = mqtt.Client(client_id=MQTT_CONF["CLIENT_ID_S"])
-client_sender.on_disconnect = on_disconnect
-client_sender.username_pw_set(MQTT_CONF["MQTT_USERNAME"], MQTT_CONF["MQTT_PASSWORD"])
 
 
-def publish_message(message):
-    client_sender.publish(f'{MQTT_CONF["MQTT_TOPIC_PREFIX"]}/6', message)
+def publish_message(message, topic=f'{MQTT_CONF["MQTT_TOPIC_PREFIX"]}/6'):
+    client_sender.publish(topic, message)
 
 
 def start_mqtt_client():
+    client.on_connect = on_connect
+    client.on_message = on_message
+    client.on_disconnect = on_disconnect
+    # 设置用户名和密码
+    client.username_pw_set(MQTT_CONF["MQTT_USERNAME"], MQTT_CONF["MQTT_PASSWORD"])
     client.connect(
         MQTT_CONF["MQTT_BROKER_PUBLIC"],
         MQTT_CONF["MQTT_PORT"],
@@ -51,6 +51,10 @@ def start_mqtt_client():
     )
     client.loop_start()
 
+    client_sender.on_disconnect = on_disconnect
+    client_sender.username_pw_set(
+        MQTT_CONF["MQTT_USERNAME"], MQTT_CONF["MQTT_PASSWORD"]
+    )
     client_sender.connect(
         MQTT_CONF["MQTT_BROKER_PUBLIC"],
         MQTT_CONF["MQTT_PORT"],

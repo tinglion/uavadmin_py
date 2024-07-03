@@ -148,3 +148,14 @@ class UavFlightSerializer(CustomModelSerializer):
         model = UavFlight
         fields = "__all__"
         read_only_fields = ["id"]
+
+
+class UavTrackSerializer(CustomModelSerializer):
+    """
+    序列化器
+    """
+
+    class Meta:
+        model = UavTrack
+        fields = "__all__"
+        read_only_fields = ["id"]

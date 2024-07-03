@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from django.db import models
+from django.utils import timezone
 
 from uavadmin.utils.models import CoreModel, get_custom_app_models, table_prefix
 
@@ -94,7 +95,7 @@ class UavBasement(CoreModel):
 
     eirp = models.CharField(max_length=64, verbose_name="eirp")
     band_width = models.CharField(max_length=64, verbose_name="band_width")
-    num_channel = models.IntegerField(max_length=64, verbose_name="num_channel")
+    num_channel = models.IntegerField(default=0, verbose_name="num_channel")
 
     status = models.IntegerField(verbose_name="状态", default=0, help_text="[]")
 
@@ -134,6 +135,31 @@ class UavFlight(CoreModel):
 
     class Meta:
         db_table = "uav_flight"
+        verbose_name = "UAV"
+        verbose_name_plural = verbose_name
+        ordering = ("create_datetime",)
+        app_label = "uav"
+
+    def __str__(self):
+        return f"{self.name}"
+
+
+class UavTrack(CoreModel):
+    topic = models.CharField(max_length=64, verbose_name="topic")
+    pos = models.JSONField(verbose_name="轨迹", null=True)
+    # create_time = models.DateTimeField(default=timezone.now)
+
+    status = models.IntegerField(verbose_name="状态", default=0, help_text="[]")
+
+    # def save(self, *args, **kwargs):
+    #     # Ensure the timestamp has milliseconds precision
+    #     self.create_time = self.create_time.replace(
+    #         microsecond=int(self.create_time.microsecond / 1000) * 1000
+    #     )
+    #     super().save(*args, **kwargs)
+
+    class Meta:
+        db_table = "uav_track"
         verbose_name = "UAV"
         verbose_name_plural = verbose_name
         ordering = ("create_datetime",)
