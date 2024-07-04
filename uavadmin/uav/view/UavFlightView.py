@@ -16,7 +16,7 @@ from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 
-from uavadmin.uav import mqtt_client
+from uavadmin.uav.mqtt_client import mqtt_client
 from uavadmin.uav.models import UavFlight
 from uavadmin.uav.module import datafile_wrapper
 from uavadmin.uav.serializers import UavFlightSerializer

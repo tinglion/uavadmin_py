@@ -8,9 +8,9 @@ class UavConfig(AppConfig):
     name = "uavadmin.uav"
 
     def ready(self):
-        if os.environ.get("RUN_MAIN") == "true":
-            from .mqtt_client import start_mqtt_client
+        # if os.environ.get("RUN_MAIN") == "true":
+        from .mqtt_client import mqtt_client
 
-            print(f"@sting start mqtt")
-            # 在Django应用启动时启动MQTT客户端
-            start_mqtt_client()
+        print(f"@sting start mqtt")
+        # 在Django应用启动时启动MQTT客户端
+        mqtt_client.start_mqtt_client()

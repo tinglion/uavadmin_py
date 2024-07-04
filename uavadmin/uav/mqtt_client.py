@@ -28,36 +28,50 @@ def on_disconnect(client, userdata, rc):
         client.reconnect()
 
 
-# 创建MQTT客户端
-client = mqtt.Client(client_id=MQTT_CONF["CLIENT_ID_R"])
-## client_sender
-client_sender = mqtt.Client(client_id=MQTT_CONF["CLIENT_ID_S"])
+class MqttClient:
+    def __init__(self):
+        self.client = None
+        self.client_sender = None
 
+    def publish_message(self, message, topic=f'{MQTT_CONF["MQTT_TOPIC_PREFIX"]}/6'):
+        if self.client_sender:
+            self.client_sender.publish(topic, message)
 
-def publish_message(message, topic=f'{MQTT_CONF["MQTT_TOPIC_PREFIX"]}/6'):
-    client_sender.publish(topic, message)
+    def start_mqtt_client(self):
+        if not self.client:
+            self.client = mqtt.Client(client_id=MQTT_CONF["CLIENT_ID_R"])
+            self.client.on_connect = on_connect
+            self.client.on_message = on_message
+            self.client.on_disconnect = on_disconnect
+            # 设置用户名和密码
+            self.client.username_pw_set(
+                MQTT_CONF["MQTT_USERNAME"], MQTT_CONF["MQTT_PASSWORD"]
+            )
+            self.client.connect(
+                MQTT_CONF["MQTT_BROKER_PUBLIC"],
+                MQTT_CONF["MQTT_PORT"],
+                MQTT_CONF["MQTT_KEEPALIVE_INTERVAL"],
+            )
+            self.client.loop_start()
+            print(
+                f'connect to {MQTT_CONF["MQTT_BROKER_PUBLIC"]} with {MQTT_CONF["CLIENT_ID_R"]}'
+            )
 
+        ## client_sender
+        if not self.client_sender:
+            self.client_sender = mqtt.Client(client_id=MQTT_CONF["CLIENT_ID_S"])
+            self.client_sender.on_disconnect = on_disconnect
+            self.client_sender.username_pw_set(
+                MQTT_CONF["MQTT_USERNAME"], MQTT_CONF["MQTT_PASSWORD"]
+            )
+            self.client_sender.connect(
+                MQTT_CONF["MQTT_BROKER_PUBLIC"],
+                MQTT_CONF["MQTT_PORT"],
+                MQTT_CONF["MQTT_KEEPALIVE_INTERVAL"],
+            )
+            self.client_sender.loop_start()
+            print(
+                f'connect to {MQTT_CONF["MQTT_BROKER_PUBLIC"]} with {MQTT_CONF["CLIENT_ID_S"]}'
+            )
 
-def start_mqtt_client():
-    client.on_connect = on_connect
-    client.on_message = on_message
-    client.on_disconnect = on_disconnect
-    # 设置用户名和密码
-    client.username_pw_set(MQTT_CONF["MQTT_USERNAME"], MQTT_CONF["MQTT_PASSWORD"])
-    client.connect(
-        MQTT_CONF["MQTT_BROKER_PUBLIC"],
-        MQTT_CONF["MQTT_PORT"],
-        MQTT_CONF["MQTT_KEEPALIVE_INTERVAL"],
-    )
-    client.loop_start()
-
-    client_sender.on_disconnect = on_disconnect
-    client_sender.username_pw_set(
-        MQTT_CONF["MQTT_USERNAME"], MQTT_CONF["MQTT_PASSWORD"]
-    )
-    client_sender.connect(
-        MQTT_CONF["MQTT_BROKER_PUBLIC"],
-        MQTT_CONF["MQTT_PORT"],
-        MQTT_CONF["MQTT_KEEPALIVE_INTERVAL"],
-    )
-    client_sender.loop_start()
+mqtt_client = MqttClient()
