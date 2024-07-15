@@ -88,6 +88,13 @@ class CustomModelSerializer(DynamicFieldsMixin, ModelSerializer):
                 setattr(
                     self.instance, self.modifier_field_id, self.get_request_user_id()
                 )
+            if (
+                    self.dept_belong_id_field_name in self.fields.fields
+                    and validated_data.get(self.dept_belong_id_field_name, None) is None
+                ):
+                    validated_data[self.dept_belong_id_field_name] = getattr(
+                        self.instance, self.dept_belong_id_field_name, None
+                    )
         return super().update(instance, validated_data)
 
     def get_request_username(self):
