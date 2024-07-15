@@ -64,14 +64,15 @@ class MqttClient:
         logger.info("init")
 
     def publish_message(self, message, topic=f'{MQTT_CONF["MQTT_TOPIC_PREFIX"]}/6'):
+        if not self.client_sender:
+            self.start_mqtt_client()
         if self.client_sender:
             if self.client_sender.is_connected():
                 self.client_sender.publish(topic, message)
             else:
                 pending_messages.append((topic, message))
 
-    def start_mqtt_client(self):
-        logger.info(f"start")
+    def _start_receiver(self):
         if not self.client:
             self.client = mqtt.Client(client_id=MQTT_CONF["CLIENT_ID_R"])
             self.client.on_connect = on_connect
@@ -90,7 +91,7 @@ class MqttClient:
             logger.info(f"connect to {self.client.host} with {self.client._client_id}")
             self.client.loop_start()  # loop_start
 
-        ## client_sender
+    def _start_sender(self):
         if not self.client_sender:
             self.client_sender = mqtt.Client(client_id=MQTT_CONF["CLIENT_ID_S"])
             self.client_sender.username_pw_set(
@@ -108,6 +109,15 @@ class MqttClient:
                 f"connect to {self.client_sender.host} with {self.client_sender._client_id}"
             )
             self.client_sender.loop_start()  # loop_forever()
+
+    def start_mqtt_client(self):
+        logger.info(f"start")
+        if not self.client:
+            self._start_receiver()
+
+        ## client_sender
+        if not self.client_sender:
+            self._start_sender()
 
 
 mqtt_client = MqttClient()

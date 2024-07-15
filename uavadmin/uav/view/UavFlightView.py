@@ -52,6 +52,25 @@ class UavFlightViewSet(CustomModelViewSet):
 
     # mock
     @swagger_auto_schema(
+        operation_summary="init mqtt client",
+    )
+    @action(
+        methods=["GET"],
+        detail=False,
+        permission_classes=[IsAuthenticated],
+        extra_filter_class=[],
+    )
+    def start_mqtt(self, request):
+        try:
+            mqtt_client.start_mqtt_client()
+            return SuccessResponse()
+        except Exception as e:
+            logger.error(f"ERROR {id} {e}")
+            traceback.print_exc()
+        return ErrorResponse(msg="error")
+
+    # mock
+    @swagger_auto_schema(
         operation_summary="do it",
         request_body=openapi.Schema(
             type=openapi.TYPE_OBJECT,
