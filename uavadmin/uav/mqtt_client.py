@@ -5,6 +5,7 @@ import paho.mqtt.client as mqtt
 
 from appuav.settings import MQTT_CONF
 from uavadmin.uav.models import UavTrack
+from uavadmin.uav.module import radar2_wrapper
 
 logger = logging.getLogger(__name__)
 
@@ -16,6 +17,7 @@ pending_messages = []
 def on_connect(client, userdata, flags, rc):
     if rc == 0:
         logger.info(f"Connected {client._client_id}")
+        client.subscribe(f'{MQTT_CONF["MQTT_TOPIC_PREFIX"]}/radar2')
         for id in range(50):
             client.subscribe(f'{MQTT_CONF["MQTT_TOPIC_PREFIX"]}/{id}')
 
@@ -51,10 +53,14 @@ def on_disconnect2(client, userdata, rc):
 
 # 回调函数：接收消息时
 def on_message(client, userdata, msg):
-    # TODO 保存历史轨迹
     content = msg.payload.decode()
-    logger.info(f"Received message: {content} on topic {msg.topic}")
-    UavTrack.objects.create(topic=msg.topic, pos=content)
+    logger.info(f"Received topic={msg.topic} message={content}")
+    if msg.topic.find("radar2") >= 0:
+        #
+        radar2_wrapper.do_message(content=content, topic=msg.topic)
+    else:
+        # 保存历史轨迹
+        UavTrack.objects.create(topic=msg.topic, pos=content)
 
 
 class MqttClient:
@@ -63,7 +69,9 @@ class MqttClient:
         self.client_sender = None
         logger.info("init")
 
-    def publish_message(self, message, topic=f'{MQTT_CONF["MQTT_TOPIC_PREFIX"]}/6'):
+    def publish_message(
+        self, message, topic=f'{MQTT_CONF["MQTT_TOPIC_PREFIX"]}/radar2'
+    ):
         if not self.client_sender:
             self.start_mqtt_client()
         if self.client_sender:

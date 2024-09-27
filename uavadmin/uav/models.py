@@ -12,6 +12,9 @@ class UavVehicle(CoreModel):
 
     map_id = models.BigIntegerField()
     airport_id = models.BigIntegerField()
+    x = models.FloatField(verbose_name="相对机场坐标，米", null=True, default=0)
+    y = models.FloatField(verbose_name="相对机场坐标，米", null=True, default=0)
+    z = models.FloatField(verbose_name="相对机场坐标，米", null=True, default=0)
 
     status = models.IntegerField(verbose_name="状态", default=0, help_text="[]")
 

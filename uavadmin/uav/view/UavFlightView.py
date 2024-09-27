@@ -16,12 +16,12 @@ from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 
-from uavadmin.uav.mqtt_client import mqtt_client
 from uavadmin.uav.models import UavFlight
 from uavadmin.uav.module import datafile_wrapper
+from uavadmin.uav.mqtt_client import mqtt_client
 from uavadmin.uav.serializers import UavFlightSerializer
+from uavadmin.utils import coord_transform, time_utils
 from uavadmin.utils.json_response import DetailResponse, ErrorResponse, SuccessResponse
-from uavadmin.utils.time_utils import time_str_to_millis
 from uavadmin.utils.viewset import CustomModelViewSet
 
 logger = logging.getLogger(__name__)
@@ -29,7 +29,7 @@ logger = logging.getLogger(__name__)
 
 class UavFlightViewSet(CustomModelViewSet):
     """
-    不良反应药品接口
+    飞行轨迹接口
     list:查询
     create:新增
     update:修改
@@ -116,12 +116,7 @@ class UavFlightViewSet(CustomModelViewSet):
     )
     def mock_radar(self, request):
         try:
-            # rlist = json.load("./data/flight.json")
             pos_list = datafile_wrapper.load_flight_from_xls()
-            # for position in pos_list:
-            #     mqtt_client.publish_message(
-            #         json.dumps(position["pos"]), topic=position["topic"]
-            #     )
 
             # different topic
             pre_map = {}
@@ -129,7 +124,7 @@ class UavFlightViewSet(CustomModelViewSet):
             for item in pos_list:
                 topic = item["topic"]
 
-                cur_time = time_str_to_millis(item["pos"]["time"])
+                cur_time = time_utils.time_str_to_millis(item["pos"]["time"])
                 if topic in pre_map:
                     pre_time = pre_map[topic]
                     if pre_time and cur_time > pre_time:
@@ -143,6 +138,25 @@ class UavFlightViewSet(CustomModelViewSet):
                 mqtt_client.publish_message(json.dumps(item["pos"]), topic=topic)
 
             return SuccessResponse(msg=f"{topic_map}")
+        except Exception as e:
+            logger.error(f"ERROR {e}")
+            traceback.print_exc()
+        return ErrorResponse(msg="error")
+
+    #
+    @swagger_auto_schema(operation_summary="radar", example="{}")
+    @action(methods=["GET"], detail=False)
+    def mock_radar2(self, request):
+        """mock radar 大地坐标"""
+        try:
+            pos_list = datafile_wrapper.load_flight_from_jsonl()
+            pre_time = None
+            for pos in pos_list:
+                if pre_time:
+                    time.sleep((pos["time"] - pre_time) / 1000)
+                pre_time = pos["time"]
+                mqtt_client.publish_message(json.dumps(pos))
+            return SuccessResponse(msg=f"{len(pos_list)}")
         except Exception as e:
             logger.error(f"ERROR {e}")
             traceback.print_exc()

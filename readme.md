@@ -2,6 +2,27 @@
 
 ## pm
 
+* 飞行器消失条件：speed==-1 or 5分钟没有数据
+
+```json
+{
+    "time": 1724867624200,
+    "participants": [
+        {
+            "id": 12345679077,
+            "location": {
+                "longitude": 113.2456341,
+                "latitude": 23.0217575,
+                "height": 147.54
+            },
+            "speed": 6.49
+        }
+    ]
+}
+```
+
+### old
+
 ```json
 [
 {
@@ -45,7 +66,6 @@ python manage.py test uavadmin.adverse.tests
 apt-get install python3-dev default-libmysqlclient-dev build-essential pkg-config
 apt-get install postgresql libpq-dev python-dev
 ```
-
 
 ### docker
 
