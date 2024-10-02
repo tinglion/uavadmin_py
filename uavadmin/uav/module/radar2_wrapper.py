@@ -52,6 +52,8 @@ def do_message(content, topic=""):
         item["contentType"] = "radar2"
         for id in all_user_ids:
             websocket_push(id, message=item)
+            # logger.info(f"Sent id={id} message={item}")
 
         n += 1
     logger.info(f"msg={n}")
+    return n

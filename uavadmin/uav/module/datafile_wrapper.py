@@ -8,7 +8,7 @@ from openpyxl.worksheet.datavalidation import DataValidation
 from openpyxl.worksheet.table import Table, TableStyleInfo
 
 
-def load_flight_from_jsonl(fn=r"./data/track_Lshape_0828.txt"):
+def load_flight_from_jsonl(fn=r"./data/track_Lshape_0828.jsonl"):
     data = []
     with open(fn, "r", encoding="utf8") as f:
         for line in f:

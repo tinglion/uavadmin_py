@@ -146,13 +146,16 @@ class UavFlightViewSet(CustomModelViewSet):
     #
     @swagger_auto_schema(operation_summary="radar", example="{}")
     @action(methods=["GET"], detail=False)
-    def mock_radar2(self, request):
+    def mock_radar2(self, request, *args, **kwargs):
         """mock radar 大地坐标"""
         try:
-            pos_list = datafile_wrapper.load_flight_from_jsonl()
+            file_type = request.query_params.get("type", None)
+            pos_list = datafile_wrapper.load_flight_from_jsonl(
+                fn=f"./data/track_Lshape_0828{'' if not file_type else f'.{file_type}'}.jsonl"
+            )
             pre_time = None
             for pos in pos_list:
-                if pre_time:
+                if pre_time and pos["time"] > pre_time:
                     time.sleep((pos["time"] - pre_time) / 1000)
                 pre_time = pos["time"]
                 mqtt_client.publish_message(json.dumps(pos))

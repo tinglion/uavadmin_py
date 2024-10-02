@@ -2,6 +2,8 @@
 
 ## pm
 
+### 2024.9.25 数据流
+
 * 飞行器消失条件：speed==-1 or 5分钟没有数据
 
 ```json
@@ -19,6 +21,16 @@
         }
     ]
 }
+```
+
+#### 制作数据
+
+```bash
+cat data/track_Lshape_0828.jsonl | awk '{print $0"\n"$1"100"$2$3($4+0.00001)$5}'
+
+cat data/track_Lshape_0828.jsonl | awk '{printf "%s\n%s100%s%s%.7f%s\n", $0, $1, $2, $3, ($4 - 0.00004), $5}' > data/track_Lshape_0828.dual.jsonl
+
+cat data/track_Lshape_0828.jsonl | awk '{printf "%s\n%s100%s%s%.7f%s\n%s%d%s%.7f%s\n", $0, $1, $2, $3, ($4 - 0.0001), $5, $1, int($2)+1, $3, ($4 +0.0004), $5}' > data/track_Lshape_0828.dual.jsonl
 ```
 
 ### old
