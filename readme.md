@@ -1,5 +1,7 @@
 # readme
 
+http://8.130.50.197:18083/
+
 ## pm
 
 ### 2024.9.25 数据流
@@ -82,6 +84,9 @@ apt-get install postgresql libpq-dev python-dev
 ### docker
 
 ```bash
+docker run -d --name emqx -p 1883:1883 -p 8083:8083 -p 8084:8084 -p 8883:8883 -p 18083:18083 emqx/emqx:latest
+# Sting@2024
+
 docker build -t py:3.12 .
 docker run -d \
         --name=uavadmin_py \
@@ -104,3 +109,4 @@ docker run -d \
 ### pwd
 
 pwd123456
+password123

@@ -24,7 +24,7 @@ def websocket_push(user_id, message):
 
 
 # # 收到消息，保存，换算坐标，发送给前端
-def do_message(content, topic=""):
+def do_message(content, topic):
     if not content:
         return
     msg = json.loads(content)
@@ -49,7 +49,7 @@ def do_message(content, topic=""):
         item["location"]["latitude"] = xy[1]
 
         # 发送给前端 websocket
-        item["contentType"] = "radar2"
+        item["contentType"] = topic
         for id in all_user_ids:
             websocket_push(id, message=item)
             # logger.info(f"Sent id={id} message={item}")

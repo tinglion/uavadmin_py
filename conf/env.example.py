@@ -23,7 +23,7 @@ DATABASE_PORT = 3306
 # # 数据库用户名
 DATABASE_USER = "root"
 # # 数据库密码
-DATABASE_PASSWORD = ""
+DATABASE_PASSWORD = "123456"
 
 # 表前缀
 TABLE_PREFIX = "dv_"
@@ -53,13 +53,19 @@ COLUMN_EXCLUDE_APPS = []
 DB_CONF = {}
 
 MQTT_CONF = dict(
-    MQTT_BROKER="10.19.53.207",
+    MQTT_BROKER_PUBLIC="127.0.0.1",
+    MQTT_BROKER="127.0.0.1",
     MQTT_PORT=1883,
     MQTT_KEEPALIVE_INTERVAL=60,
     MQTT_TOPIC_PREFIX="asmote/drone/data",
     MQTT_TOPIC="asmote/drone/data/6",
-    MQTT_USERNAME="asmote",  # MQTT用户名
-    MQTT_PASSWORD="",  # MQTT密码
+    MQTT_TOPIC_RADAR="asmote/drone/data/radar2",
+    MQTT_TOPIC_UAV="asmote/drone/data/UAVreported",
+    MQTT_USERNAME="admin",  # MQTT用户名
+    MQTT_PASSWORD="Sting@2024",  # MQTT密码
+    CLIENT_ID_S="asmote_d_s",
+    CLIENT_ID_R="asmote_d_r",
 )
+
 
 TEMP_DIR = "/tmp/uav"

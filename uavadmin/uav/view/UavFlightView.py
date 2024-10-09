@@ -16,6 +16,7 @@ from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 
+from appuav.settings import MQTT_CONF
 from uavadmin.uav.models import UavFlight
 from uavadmin.uav.module import datafile_wrapper
 from uavadmin.uav.mqtt_client import mqtt_client
@@ -98,7 +99,9 @@ class UavFlightViewSet(CustomModelViewSet):
         try:
             flight = UavFlight.objects.get(id=id)
             for position in flight.trace:
-                mqtt_client.publish_message(json.dumps(position))
+                mqtt_client.publish_message(
+                    json.dumps(position), MQTT_CONF["MQTT_TOPIC"]
+                )
                 # time.sleep(1)
             return SuccessResponse()
         except Exception as e:
@@ -157,8 +160,16 @@ class UavFlightViewSet(CustomModelViewSet):
             for pos in pos_list:
                 if pre_time and pos["time"] > pre_time:
                     time.sleep((pos["time"] - pre_time) / 1000)
+
+                for item in pos["participants"]:
+                    data = {"time": pos["time"], "participants": [item]}
+                    topic = MQTT_CONF["MQTT_TOPIC_RADAR"]
+                    # 历史测试数据，100开头标识上报数据
+                    if f"{item['id']}".find("777") == 0:
+                        topic = MQTT_CONF["MQTT_TOPIC_UAV"]
+                    mqtt_client.publish_message(json.dumps(data), topic=topic)
+
                 pre_time = pos["time"]
-                mqtt_client.publish_message(json.dumps(pos))
             return SuccessResponse(msg=f"{len(pos_list)}")
         except Exception as e:
             logger.error(f"ERROR {e}")

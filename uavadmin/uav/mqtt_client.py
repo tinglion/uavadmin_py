@@ -6,6 +6,7 @@ import paho.mqtt.client as mqtt
 from appuav.settings import MQTT_CONF
 from uavadmin.uav.models import UavTrack
 from uavadmin.uav.module import radar2_wrapper
+from uavadmin.utils import string_util
 
 logger = logging.getLogger(__name__)
 
@@ -17,7 +18,10 @@ pending_messages = []
 def on_connect(client, userdata, flags, rc):
     if rc == 0:
         logger.info(f"Connected {client._client_id}")
-        client.subscribe(f'{MQTT_CONF["MQTT_TOPIC_PREFIX"]}/radar2')
+        client.subscribe(MQTT_CONF["MQTT_TOPIC_RADAR"])
+        client.subscribe(MQTT_CONF["MQTT_TOPIC_UAV"])
+
+        # old
         for id in range(50):
             client.subscribe(f'{MQTT_CONF["MQTT_TOPIC_PREFIX"]}/{id}')
 
@@ -55,7 +59,10 @@ def on_disconnect2(client, userdata, rc):
 def on_message(client, userdata, msg):
     content = msg.payload.decode()
     logger.info(f"Received topic={msg.topic} message={content}")
-    if msg.topic.find("radar2") >= 0:
+    if (
+        msg.topic == MQTT_CONF["MQTT_TOPIC_RADAR"]
+        or msg.topic == MQTT_CONF["MQTT_TOPIC_UAV"]
+    ):
         #
         radar2_wrapper.do_message(content=content, topic=msg.topic)
     else:
@@ -69,9 +76,7 @@ class MqttClient:
         self.client_sender = None
         logger.info("init")
 
-    def publish_message(
-        self, message, topic=f'{MQTT_CONF["MQTT_TOPIC_PREFIX"]}/radar2'
-    ):
+    def publish_message(self, message, topic):
         if not self.client_sender:
             self.start_mqtt_client()
         if self.client_sender:
@@ -82,7 +87,9 @@ class MqttClient:
 
     def _start_receiver(self):
         if not self.client:
-            self.client = mqtt.Client(client_id=MQTT_CONF["CLIENT_ID_R"])
+            self.client = mqtt.Client(
+                client_id=f'{MQTT_CONF["CLIENT_ID_R"]}_{string_util.random_str(4)}'
+            )  # random
             self.client.on_connect = on_connect
             self.client.on_message = on_message
             self.client.on_disconnect = on_disconnect
@@ -101,7 +108,9 @@ class MqttClient:
 
     def _start_sender(self):
         if not self.client_sender:
-            self.client_sender = mqtt.Client(client_id=MQTT_CONF["CLIENT_ID_S"])
+            self.client_sender = mqtt.Client(
+                client_id=f'{MQTT_CONF["CLIENT_ID_S"]}_{string_util.random_str(4)}'
+            )
             self.client_sender.username_pw_set(
                 MQTT_CONF["MQTT_USERNAME"], MQTT_CONF["MQTT_PASSWORD"]
             )
